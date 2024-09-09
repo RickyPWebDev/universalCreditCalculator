@@ -12,8 +12,8 @@ function calculator() {
     let payment = Math.round(entitlement - deduction) 
 
 
-    if(payment > 1565) {
-        payment = 1565
+    if(payment > 1668) {
+        payment = 1668
     }
     if(payment < 0) {
         payment = 0
