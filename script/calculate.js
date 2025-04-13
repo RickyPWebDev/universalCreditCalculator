@@ -3,8 +3,8 @@ let outPut = document.getElementById('calculation-output');
 function calculator() {
     let income1 = parseInt(document.getElementById('income-1').value);
     let income2 = parseInt(document.getElementById('income-2').value);
-    const entitlement = 1668
-    const allowance = 379
+    const entitlement = 1743.44
+    const allowance = 404
     let totalIncome =  income1 + income2;
     let total = totalIncome - allowance;
     let deduction = 0.55 * total;
