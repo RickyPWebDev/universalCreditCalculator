@@ -15,8 +15,8 @@ function calculator() {
     let payment = Math.round(entitlement - deduction) 
 
 
-    if(payment > 1668) {
-        payment = 1668
+    if(payment > entitlement) {
+        payment = entitlement
     }
     if(payment < 0) {
         payment = 0
@@ -36,53 +36,51 @@ function calculator() {
     }
 
     // Create new chart showing percentage received vs lost
-    entitlementChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Received', 'Lost'],
-            datasets: [{
-                label: '£ Amount',
-                data: [payment, lostAmount],
-                backgroundColor: [
-                    'rgba(75, 192, 192, 0.7)',   // Received - green
-                    'rgba(255, 99, 132, 0.7)'    // Lost - red
-                ],
-                borderColor: [
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 99, 132, 1)'
-                ],
-                borderWidth: 1
-            }]
+   entitlementChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Received', 'Lost'],
+        datasets: [{
+            label: '£ Amount',
+            data: [payment, lostAmount],
+            backgroundColor: [
+                'rgba(75, 192, 192, 0.7)',   // Received - green
+                'rgba(255, 99, 132, 0.7)'    // Lost - red
+            ],
+            borderColor: [
+                'rgba(75, 192, 192, 1)',
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        indexAxis: 'y',  // horizontal bar
+        scales: {
+            x: {
+                beginAtZero: true,
+                max: entitlement
+            }
         },
-        options: {
-            indexAxis: 'y',  // horizontal bar for better visual
-            scales: {
-                x: {
-                    beginAtZero: true,
-                    max: entitlement
-                }
+        animation: {
+            duration: 800,          // smooth 0.8 second animation
+            easing: 'easeOutQuart'  // smooth easing
+        },
+        plugins: {
+            legend: {
+                display: false
             },
-            plugins: {
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let val = context.parsed.x;
-                            let percent = ((val / entitlement) * 100).toFixed(1);
-                            return `${val} (£) — ${percent}% of entitlement`;
-                        }
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        let val = context.parsed.x;
+                        let percent = ((val / entitlement) * 100).toFixed(1);
+                        return `${val} (£) — ${percent}% of entitlement`;
                     }
                 }
             }
         }
-    });
+    }
+});
+
 }
-
-
-
-
-
-
-
