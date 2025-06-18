@@ -6,8 +6,8 @@ let entitlementChart = null;
 function calculator() {
     let income1 = parseInt(document.getElementById('income-1').value);
     let income2 = parseInt(document.getElementById('income-2').value);
-    const entitlement = 1743.44
-    const allowance = 404
+    const entitlement = 1763.72
+    const allowance = 411
     let totalIncome =  income1 + income2;
     let total = totalIncome - allowance;
     let deduction = 0.55 * total;
