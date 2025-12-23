@@ -12,7 +12,7 @@ function calculator() {
     let total = totalIncome - allowance;
     let deduction = 0.55 * total;
 
-    let payment = Math.round(entitlement - deduction) 
+    let payment = (entitlement - deduction).toFixed(2);
 
 
     if(payment > entitlement) {
